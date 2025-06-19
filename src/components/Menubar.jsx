@@ -3,7 +3,8 @@ import { useNavigate } from 'react-router-dom';
 
 export const Menubar = () => {
   const navigate = useNavigate();
-  const [isLoggedIn, setIsLoggedIn] = useState(true); // Set to true to show logout button
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [showDropdown, setShowDropdown] = useState(false);
 
   const handleLogout = () => {
     setIsLoggedIn(false);
@@ -23,14 +24,43 @@ export const Menubar = () => {
       </div>
 
       {/* Auth Buttons */}
-      <div>
+      <div className="position-relative">
         {isLoggedIn ? (
-          <button
-            className="btn btn-outline-danger"
-            onClick={handleLogout}
-          >
-            Logout
-          </button>
+          <>
+            <button
+              className="btn btn-outline-primary dropdown-toggle"
+              onClick={() => setShowDropdown(!showDropdown)}
+            >
+              <i className="bi bi-person-circle me-2"></i>
+              My Account
+            </button>
+            
+            {showDropdown && (
+              <div className="dropdown-menu show position-absolute end-0" style={{ minWidth: '160px' }}>
+                <button 
+                  className="dropdown-item"
+                  onClick={() => {
+                    navigate('/profile');
+                    setShowDropdown(false);
+                  }}
+                >
+                  <i className="bi bi-person me-2"></i>
+                  Profile
+                </button>
+                <div className="dropdown-divider"></div>
+                <button 
+                  className="dropdown-item text-danger"
+                  onClick={() => {
+                    handleLogout();
+                    setShowDropdown(false);
+                  }}
+                >
+                  <i className="bi bi-box-arrow-right me-2"></i>
+                  Logout
+                </button>
+              </div>
+            )}
+          </>
         ) : (
           <button
             className="btn btn-primary"

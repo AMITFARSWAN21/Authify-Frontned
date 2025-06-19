@@ -6,6 +6,7 @@ import { Home } from './pages/Home'
 import { Login } from './pages/Login'
 import { ResetPassword } from './pages/ResetPassword'
 import { Register } from './pages/Register'
+import { Profile } from './pages/Profile'
 
 const App = () => {
   return (
@@ -17,6 +18,7 @@ const App = () => {
         <Route path="/email-verify" element={<EmailVerify />} />
         <Route path="/reset-password" element={<ResetPassword />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/profile" element={<Profile />} />
         {/* Add more routes as needed */}
       </Routes>
     </div>
