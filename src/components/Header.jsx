@@ -11,12 +11,12 @@ export const Header = () => {
           </h4>
           <h2 className="display-4 fw-bold mb-4">Welcome to our product</h2>
           <p className="lead text-muted">
-            Let's start with a quick tour and you can setup the authentication in no time
+            Access and share educational resources seamlessly - where teachers upload and students learn
           </p>
           <hr className="my-4" />
           <button className="btn btn-outline-dark rounded-pill px-4 py-2">
-  Get Started
-</button>
+            Get Started
+          </button>
         </div>
       </div>
     </div>

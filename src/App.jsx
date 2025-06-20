@@ -1,28 +1,32 @@
-import React from 'react'
-import { Routes, Route } from 'react-router-dom'
-import { ToastContainer } from 'react-toastify'
-import { EmailVerify } from './pages/EmailVerify'
-import { Home } from './pages/Home'
-import { Login } from './pages/Login'
-import { ResetPassword } from './pages/ResetPassword'
-import { Register } from './pages/Register'
-import { Profile } from './pages/Profile'
+import React from 'react';
+import { Routes, Route } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
+import { EmailVerify } from './pages/EmailVerify';
+import { Home } from './pages/Home';
+import { Login } from './pages/Login';
+import { ResetPassword } from './pages/ResetPassword';
+import { Register } from './pages/Register';
+import { Profile } from './pages/Profile';
+import { EducationalFooter } from './components/EducationalFooter'; // Adjust path as needed
 
 const App = () => {
   return (
     <div>
-      <ToastContainer/>
+      <ToastContainer />
+      
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login/>} />
+        <Route path="/login" element={<Login />} />
         <Route path="/email-verify" element={<EmailVerify />} />
         <Route path="/reset-password" element={<ResetPassword />} />
         <Route path="/register" element={<Register />} />
         <Route path="/profile" element={<Profile />} />
-        {/* Add more routes as needed */}
       </Routes>
-    </div>
-  )
-}
 
-export default App
+      {/* Always show footer */}
+      <EducationalFooter />
+    </div>
+  );
+};
+
+export default App;

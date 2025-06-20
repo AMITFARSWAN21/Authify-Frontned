@@ -20,7 +20,7 @@ export const Menubar = () => {
         onClick={() => navigate('/')}
       >
         <i className="bi bi-shield-lock-fill me-2"></i>
-        Authify
+        Edu-Notes
       </div>
 
       {/* Auth Buttons */}

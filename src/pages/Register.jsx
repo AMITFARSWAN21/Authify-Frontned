@@ -7,14 +7,16 @@ export const Register = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    password: ''
+    password: '',
+    role: '' // added role
   })
+
   const [errors, setErrors] = useState({})
   const [loading, setLoading] = useState(false)
 
   const validateForm = () => {
     const newErrors = {}
-    
+
     if (!formData.name.trim()) {
       newErrors.name = 'Name should not be empty'
     }
@@ -31,6 +33,10 @@ export const Register = () => {
       newErrors.password = 'Password must be at least 6 characters'
     }
 
+    if (!formData.role) {
+      newErrors.role = 'Please select a role'
+    }
+
     setErrors(newErrors)
     return Object.keys(newErrors).length === 0
   }
@@ -41,7 +47,6 @@ export const Register = () => {
       ...prev,
       [name]: value
     }))
-    // Clear error when user starts typing
     if (errors[name]) {
       setErrors(prev => ({
         ...prev,
@@ -52,7 +57,7 @@ export const Register = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    
+
     if (!validateForm()) {
       return
     }
@@ -68,7 +73,7 @@ export const Register = () => {
       })
 
       const data = await response.json()
-      
+
       if (response.ok) {
         navigate('/login')
       } else {
@@ -98,8 +103,8 @@ export const Register = () => {
           <form onSubmit={handleSubmit}>
             <div className="mb-3">
               <label className="form-label">Full Name</label>
-              <input 
-                type="text" 
+              <input
+                type="text"
                 name="name"
                 className={`form-control ${errors.name ? 'is-invalid' : ''}`}
                 placeholder="Enter your full name"
@@ -111,8 +116,8 @@ export const Register = () => {
 
             <div className="mb-3">
               <label className="form-label">Email address</label>
-              <input 
-                type="email" 
+              <input
+                type="email"
                 name="email"
                 className={`form-control ${errors.email ? 'is-invalid' : ''}`}
                 placeholder="name@example.com"
@@ -122,10 +127,10 @@ export const Register = () => {
               {errors.email && <div className="invalid-feedback">{errors.email}</div>}
             </div>
 
-            <div className="mb-4">
+            <div className="mb-3">
               <label className="form-label">Password</label>
-              <input 
-                type="password" 
+              <input
+                type="password"
                 name="password"
                 className={`form-control ${errors.password ? 'is-invalid' : ''}`}
                 placeholder="Create a password"
@@ -135,12 +140,28 @@ export const Register = () => {
               {errors.password && <div className="invalid-feedback">{errors.password}</div>}
             </div>
 
+            <div className="mb-3">
+              <label className="form-label">Role</label>
+              <select
+                name="role"
+                className={`form-control ${errors.role ? 'is-invalid' : ''}`}
+                value={formData.role}
+                onChange={handleChange}
+              >
+                <option value="">Select role</option>
+                <option value="1">Student</option>
+                <option value="2">Admin</option>
+                {/* Add more roles if needed */}
+              </select>
+              {errors.role && <div className="invalid-feedback">{errors.role}</div>}
+            </div>
+
             {errors.submit && (
               <div className="alert alert-danger mb-3">{errors.submit}</div>
             )}
 
-            <button 
-              type="submit" 
+            <button
+              type="submit"
               className="btn btn-primary w-100 py-2 mb-3"
               disabled={loading}
             >
@@ -149,8 +170,8 @@ export const Register = () => {
 
             <div className="text-center">
               <span className="text-muted">Already have an account? </span>
-              <span 
-                className="text-primary" 
+              <span
+                className="text-primary"
                 role="button"
                 onClick={() => navigate('/login')}
               >
