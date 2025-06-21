@@ -6,10 +6,27 @@ export const Menubar = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(true);
   const [showDropdown, setShowDropdown] = useState(false);
 
-  const handleLogout = () => {
-    setIsLoggedIn(false);
-    navigate('/login');
+  const handleLogout = async () => {
+    try {
+      const res = await fetch('http://localhost:8080/api/v1.0/logout', {
+        method: 'POST',
+        credentials: 'include', // very important to include JWT cookie
+      });
+  
+      if (res.ok) {
+        setIsLoggedIn(false);
+        navigate('/login');
+      } else {
+        const data = await res.text();
+        console.error('Logout failed:', data);
+        alert('Logout failed');
+      }
+    } catch (err) {
+      console.error('Logout error:', err);
+      alert('Logout error');
+    }
   };
+  
 
   return (
     <nav className="navbar navbar-light bg-light px-4 py-3">
