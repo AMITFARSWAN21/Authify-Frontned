@@ -23,22 +23,34 @@ export const Login = () => {
     e.preventDefault()
     setError('')
     setLoading(true)
-
+  
     try {
+      // Step 1: Login request
       const response = await fetch(`${AppConstants.BACKEND_URL}/api/v1.0/login`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        credentials: 'include', // Important for cookies
+        credentials: 'include', // Include cookies
         body: JSON.stringify(formData)
       })
-
+  
       const data = await response.json()
-
+  
       if (response.ok) {
-        // Login successful
-        navigate('/')
+        // Step 2: Get role using email
+        const roleRes = await fetch(`${AppConstants.BACKEND_URL}/api/v1.0/role?email=${formData.email}`, {
+          credentials: 'include'
+        })
+        const roleData = await roleRes.json()
+  
+        if (roleData.role === 1) {
+          navigate('/') // Student
+        } else if (roleData.role === 2) {
+          navigate('/admin-dashboard') // Admin
+        } else {
+          setError('Unknown role')
+        }
       } else {
         setError(data.message || 'Login failed')
       }
@@ -48,6 +60,7 @@ export const Login = () => {
       setLoading(false)
     }
   }
+  
 
   return (
     <div className="min-vh-100 d-flex align-items-center justify-content-center bg-light">
