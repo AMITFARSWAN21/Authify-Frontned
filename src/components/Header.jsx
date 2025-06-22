@@ -7,7 +7,7 @@ export const Header = () => {
         <div className="col-md-8">
           <h4 className="text-primary mb-3">
             <i className="bi bi-code-slash me-2"></i>
-            Hey Developers
+            Hey MRites,Welcome to Edu-Notes!
           </h4>
           <h2 className="display-4 fw-bold mb-4">Welcome to our product</h2>
           <p className="lead text-muted">

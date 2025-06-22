@@ -12,7 +12,7 @@ export const EducationalFooter = ({
     MRIIRS: "+91-129-4198000",
     MRU: "+91-129-4268500", 
   },
-  emailAddress = "admissions@manavrachna.edu.in",
+  emailAddress = "admissions@edu.in",
   cityOffices = [
     "Delhi", "Guwahati", "Indore", "Kota", 
     "Lucknow", "Varanasi", "Patna", "Hyderabad"
@@ -270,17 +270,7 @@ export const EducationalFooter = ({
               </div>
               <div className="text-center md:text-right">
                 <div className="flex justify-center md:justify-end items-center space-x-6 text-gray-400 text-sm">
-                  <a href="#" className="hover:text-white transition-colors duration-300 hover:underline decoration-blue-400">
-                    Privacy Policy
-                  </a>
-                  <span className="text-gray-600">•</span>
-                  <a href="#" className="hover:text-white transition-colors duration-300 hover:underline decoration-green-400">
-                    Terms of Service
-                  </a>
-                  <span className="text-gray-600">•</span>
-                  <a href="#" className="hover:text-white transition-colors duration-300 hover:underline decoration-purple-400">
-                    Sitemap
-                  </a>
+          
                 </div>
               </div>
             </div>

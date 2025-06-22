@@ -53,9 +53,9 @@ export const Features = () => {
     },
     {
       icon: "🛡️",
-      title: "Data Protection",
+      title: "Notes",
       subtitle: "",
-      description: "Advanced encryption and security measures to protect user data.",
+      description: "Access and manage your study materials anytime with EduNotes – your secure and organized note hub.",
       accent: "purple"
     },
     {
