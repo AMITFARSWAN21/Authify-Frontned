@@ -10,9 +10,9 @@ export const Menubar = () => {
     try {
       const res = await fetch('http://localhost:8080/api/v1.0/logout', {
         method: 'POST',
-        credentials: 'include', // very important to include JWT cookie
+        credentials: 'include',
       });
-  
+
       if (res.ok) {
         setIsLoggedIn(false);
         navigate('/login');
@@ -26,10 +26,9 @@ export const Menubar = () => {
       alert('Logout error');
     }
   };
-  
 
   return (
-    <nav className="navbar navbar-light bg-light px-4 py-3">
+    <nav className="navbar navbar-light bg-light px-4 py-3 d-flex justify-content-between">
       {/* Logo */}
       <div
         className="navbar-brand d-flex align-items-center"
@@ -38,6 +37,19 @@ export const Menubar = () => {
       >
         <i className="bi bi-shield-lock-fill me-2"></i>
         Edu-Notes
+      </div>
+
+      {/* Middle Nav Items */}
+      <div>
+        {isLoggedIn && (
+          <button
+            className="btn btn-outline-secondary me-3"
+            onClick={() => navigate('/notes')}
+          >
+            <i className="bi bi-journal-text me-2"></i>
+            Notes
+          </button>
+        )}
       </div>
 
       {/* Auth Buttons */}
@@ -51,7 +63,7 @@ export const Menubar = () => {
               <i className="bi bi-person-circle me-2"></i>
               My Account
             </button>
-            
+
             {showDropdown && (
               <div className="dropdown-menu show position-absolute end-0" style={{ minWidth: '160px' }}>
                 <button 
