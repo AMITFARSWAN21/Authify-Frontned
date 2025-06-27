@@ -7,10 +7,13 @@ import { Login } from './pages/Login';
 import { ResetPassword } from './pages/ResetPassword';
 import { Register } from './pages/Register';
 import { Profile } from './pages/Profile';
-import { EducationalFooter } from './components/EducationalFooter';
+// import { EducationalFooter } from './components/EducationalFooter';
 import AdminDashboard from './pages/AdminDashboard';
-import { ProtectedRoute } from './components/ProtectedRoute'; // adjust path if needed
+import { ProtectedRoute } from './components/ProtectedRoute';
 import UploadedNotes from './pages/UploadedNOtes';
+import { Layout } from './components/Layout'; // ✅
+import Registration from './pages/Registration';
+import { StudentRegistered } from './pages/StudentRegistered';
 
 const App = () => {
   return (
@@ -23,32 +26,27 @@ const App = () => {
         <Route path="/register" element={<Register />} />
         <Route path="/reset-password" element={<ResetPassword />} />
         <Route path="/email-verify" element={<EmailVerify />} />
-        <Route path="/notes" element={<UploadedNotes/>} />
 
-        {/* Protected Routes */}
-        <Route path="/" element={
-          <ProtectedRoute>
-            <Home />
-          </ProtectedRoute>
-        } />
-
-        <Route path="/profile" element={
-          <ProtectedRoute>
-            <Profile />
-          </ProtectedRoute>
-        } />
-
-        <Route path="/admin-dashboard" element={
-          <ProtectedRoute>
-            <AdminDashboard />
-          </ProtectedRoute>
-        } />
+        {/* Protected Routes with Menubar */}
+        <Route
+          element={
+            <ProtectedRoute>
+              <Layout />
+            </ProtectedRoute>
+          }
+        >
+          <Route path="/" element={<Home />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/notes" element={<UploadedNotes />} />
+          <Route path="/admin-dashboard" element={<AdminDashboard />} />
+          <Route path="/student-registration" element={<Registration/>} />
+          <Route path="/student-registered" element={<StudentRegistered/>} />
+          
+          
+        </Route>
       </Routes>
 
-      
-
-      {/* Always show footer */}
-      <EducationalFooter />
+      {/* <EducationalFooter /> */}
     </div>
   );
 };

@@ -1,10 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 export const Menubar = () => {
   const navigate = useNavigate();
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
   const [showDropdown, setShowDropdown] = useState(false);
+  const [role, setRole] = useState(null); // 1 = student, 2 = admin
+  const [isLoggedIn, setIsLoggedIn] = useState(true); // Simplified, ideally should check session
+
+  useEffect(() => {
+    const savedRole = localStorage.getItem('role');
+    if (savedRole) {
+      setRole(Number(savedRole));
+    }
+  }, []);
 
   const handleLogout = async () => {
     try {
@@ -14,6 +22,7 @@ export const Menubar = () => {
       });
 
       if (res.ok) {
+        localStorage.removeItem('role');
         setIsLoggedIn(false);
         navigate('/login');
       } else {
@@ -40,17 +49,52 @@ export const Menubar = () => {
       </div>
 
       {/* Middle Nav Items */}
-      <div>
-        {isLoggedIn && (
-          <button
-            className="btn btn-outline-secondary me-3"
-            onClick={() => navigate('/notes')}
-          >
-            <i className="bi bi-journal-text me-2"></i>
-            Notes
-          </button>
-        )}
-      </div>
+      <div className="d-flex align-items-center">
+  {isLoggedIn && role === 1 && (
+    <>
+      <button
+        className="me-3 border-0 bg-white text-dark"
+        style={{ fontSize: '1rem', padding: '6px 12px' }}
+        onClick={() => navigate('/notes')}
+      >
+        <i className="bi bi-journal-text me-2"></i>
+        Notes
+      </button>
+
+      <button
+        className="me-3 border-0 bg-white text-dark"
+        style={{ fontSize: '1rem', padding: '6px 12px' }}
+        onClick={() => navigate('/student-registration')}
+      >
+        <i className="bi bi-person-plus me-2"></i>
+        Registration
+      </button>
+    </>
+  )}
+
+  {isLoggedIn && role === 2 && (
+    <button
+      className="me-3 border-0 bg-white text-dark"
+      style={{ fontSize: '1rem', padding: '6px 12px' }}
+      onClick={() => navigate('/admin-dashboard')}
+    >
+      <i className="bi bi-upload me-2"></i>
+      Upload Notes
+    </button>
+  )}
+
+{isLoggedIn && role === 2 && (
+    <button
+      className="me-3 border-0 bg-white text-dark"
+      style={{ fontSize: '1rem', padding: '6px 12px' }}
+      onClick={() => navigate('/student-registered')}
+    >
+      <i className="bi bi-upload me-2"></i>
+      Student-Details
+    </button>
+  )}
+</div>
+
 
       {/* Auth Buttons */}
       <div className="position-relative">

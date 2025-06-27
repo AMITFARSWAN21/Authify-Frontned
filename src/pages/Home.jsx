@@ -5,12 +5,12 @@ import { Banner } from '../components/Banner'
 import { Features } from '../components/Features'
 import { AboutInstitution } from '../components/AboutInstitution'
 import { TopPlacements } from '../components/TopPlacements'
+import EducationalFooter from '../components/EducationalFooter'
 
 
 export const Home = () => {
   return (
     <div className="min-vh-100 d-flex flex-column">
-      <Menubar />
       <div className="flex-grow-1 mt-20">
         <Banner/>
         <Header />
@@ -18,6 +18,7 @@ export const Home = () => {
         <AboutInstitution/>
         <TopPlacements/>
       </div>
+      <EducationalFooter/>
     </div>
   )
 }

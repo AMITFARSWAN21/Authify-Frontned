@@ -65,40 +65,16 @@ const AdminDashboard = () => {
     }
   };
 
-  const handleLogout = async () => {
-    try {
-      await axios.post('http://localhost:8080/api/v1.0/logout', {}, {
-        withCredentials: true
-      });
-
-      localStorage.removeItem('token');
-      localStorage.removeItem('role');
-
-      navigate('/login');
-    } catch (error) {
-      console.error('Logout failed:', error);
-      alert('Logout failed. Try again.');
-    }
-  };
-
   return (
     <div className="min-h-screen bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-3xl mx-auto">
-        <div className="flex justify-between items-center mb-8">
-          <div>
-            <h1 className="text-3xl font-extrabold text-gray-900 sm:text-4xl">
-              Create New Note
-            </h1>
-            <p className="mt-1 text-lg text-gray-500">
-              Share your knowledge by creating a detailed note with attachments
-            </p>
-          </div>
-          <button
-            onClick={handleLogout}
-            className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-md text-sm"
-          >
-            Logout
-          </button>
+        <div className="mb-8">
+          <h1 className="text-3xl font-extrabold text-gray-900 sm:text-4xl">
+            Create New Note
+          </h1>
+          <p className="mt-1 text-lg text-gray-500">
+            Share your knowledge by creating a detailed note with attachments
+          </p>
         </div>
 
         {feedback.message && (
@@ -165,7 +141,7 @@ const AdminDashboard = () => {
                   <path d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
                 <div className="flex text-sm text-gray-600">
-                  <label htmlFor="pdfFile" className="relative cursor-pointer bg-white rounded-md font-medium text-blue-600 hover:text-blue-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-blue-500">
+                  <label htmlFor="pdfFile" className="relative cursor-pointer bg-white rounded-md font-medium text-blue-600 hover:text-blue-500">
                     <span>Upload a file</span>
                     <input
                       id="pdfFile"

@@ -43,6 +43,8 @@ export const Login = () => {
           credentials: 'include'
         })
         const roleData = await roleRes.json()
+
+        localStorage.setItem('role', roleData.role);
   
         if (roleData.role === 1) {
           navigate('/') // Student
