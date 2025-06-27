@@ -8,7 +8,7 @@ export const TopPlacements = ({
       company: "Paloalto",
       role: "Software Development Engineer",
       year: "2022 Batch",
-      photo: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face",
+      photo: "https://images.unsplash.com/photo-1494790108755-2616b612b550?w=150&h=150&fit=crop&crop=face",
       companyLogo: "🔍",
       package: "₹54 LPA"
     },
@@ -28,7 +28,7 @@ export const TopPlacements = ({
       company: "Tekion",
       role: "SDE-II",
       year: "2025 Batch",
-      photo: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face",
+      photo:"https://images.unsplash.com/photo-1494790108755-2616b612b550?w=150&h=150&fit=crop&crop=face",
       companyLogo: "📦",
       package: "₹24 LPA"
     },
@@ -38,7 +38,7 @@ export const TopPlacements = ({
       company: "Goldman Sachs",
       role: "Quantitative Analyst",
       year: "2025 Batch",
-      photo: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face",
+      photo:"https://images.unsplash.com/photo-1494790108755-2616b612b550?w=150&h=150&fit=crop&crop=face",
       companyLogo: "💰",
       package: "₹55 LPA"
     },
@@ -48,7 +48,7 @@ export const TopPlacements = ({
       company: "Spacetime",
       role: "Product Manager",
       year: "2024 Batch",
-      photo: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop&crop=face",
+      photo: "https://images.unsplash.com/photo-1494790108755-2616b612b550?w=150&h=150&fit=crop&crop=face",
       companyLogo: "👥",
       package: "₹54 LPA"
     },
@@ -58,7 +58,7 @@ export const TopPlacements = ({
       company: "Uber",
       role: "Software Engineer",
       year: "2024 Batch",
-      photo: "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=150&h=150&fit=crop&crop=face",
+      photo: "https://images.unsplash.com/photo-1494790108755-2616b612b550?w=150&h=150&fit=crop&crop=face",
       companyLogo: "🚗",
       package: "₹35 LPA"
     }

@@ -14,6 +14,7 @@ import UploadedNotes from './pages/UploadedNOtes';
 import { Layout } from './components/Layout'; // ✅
 import Registration from './pages/Registration';
 import { StudentRegistered } from './pages/StudentRegistered';
+import CertificateGenerator from './pages/CertificateGenerator';
 
 const App = () => {
   return (
@@ -41,6 +42,8 @@ const App = () => {
           <Route path="/admin-dashboard" element={<AdminDashboard />} />
           <Route path="/student-registration" element={<Registration/>} />
           <Route path="/student-registered" element={<StudentRegistered/>} />
+          <Route path="/generate-certificate" element={<CertificateGenerator />} />
+
           
           
         </Route>

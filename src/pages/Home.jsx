@@ -11,7 +11,7 @@ import EducationalFooter from '../components/EducationalFooter'
 export const Home = () => {
   return (
     <div className="min-vh-100 d-flex flex-column">
-      <div className="flex-grow-1 mt-20">
+      <div className="flex-grow-1 mt-10">
         <Banner/>
         <Header />
         <Features/>

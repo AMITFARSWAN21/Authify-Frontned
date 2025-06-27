@@ -83,6 +83,18 @@ export const Menubar = () => {
     </button>
   )}
 
+
+{isLoggedIn && role === 2 && (
+    <button
+      className="me-3 border-0 bg-white text-dark"
+      style={{ fontSize: '1rem', padding: '6px 12px' }}
+      onClick={() => navigate('/generate-certificate')}
+    >
+      <i className="bi bi-upload me-2"></i>
+      Generate Certificate
+    </button>
+  )}
+
 {isLoggedIn && role === 2 && (
     <button
       className="me-3 border-0 bg-white text-dark"

@@ -7,7 +7,7 @@ export const Layout = () => {
   return (
     <>
       <Menubar />
-      <div className="mt-20">
+      <div className="mt-5">
         <Outlet />
       </div>
     </>
