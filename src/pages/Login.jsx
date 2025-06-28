@@ -49,7 +49,7 @@ export const Login = () => {
         if (roleData.role === 1) {
           navigate('/') // Student
         } else if (roleData.role === 2) {
-          navigate('/admin-dashboard') // Admin
+          navigate('/') // Admin
         } else {
           setError('Unknown role')
         }
