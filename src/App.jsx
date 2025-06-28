@@ -7,7 +7,6 @@ import { Login } from './pages/Login';
 import { ResetPassword } from './pages/ResetPassword';
 import { Register } from './pages/Register';
 import { Profile } from './pages/Profile';
-// import { EducationalFooter } from './components/EducationalFooter';
 import AdminDashboard from './pages/AdminDashboard';
 import { ProtectedRoute } from './components/ProtectedRoute';
 import UploadedNotes from './pages/UploadedNOtes';
@@ -15,6 +14,7 @@ import { Layout } from './components/Layout'; // ✅
 import Registration from './pages/Registration';
 import { StudentRegistered } from './pages/StudentRegistered';
 import CertificateGenerator from './pages/CertificateGenerator';
+import NotesSummarizer from './pages/NotesSummarizer';
 
 const App = () => {
   return (
@@ -43,7 +43,8 @@ const App = () => {
           <Route path="/student-registration" element={<Registration/>} />
           <Route path="/student-registered" element={<StudentRegistered/>} />
           <Route path="/generate-certificate" element={<CertificateGenerator />} />
-
+          <Route path="/notes-summarizer" element={<NotesSummarizer />} />
+          
           
           
         </Route>

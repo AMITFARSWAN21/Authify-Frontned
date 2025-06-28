@@ -69,6 +69,16 @@ export const Menubar = () => {
         <i className="bi bi-person-plus me-2"></i>
         Registration
       </button>
+
+
+      <button
+        className="me-3 border-0 bg-white text-dark"
+        style={{ fontSize: '1rem', padding: '6px 12px' }}
+        onClick={() => navigate('/notes-summarizer')}
+      >
+        <i className="bi bi-person-plus me-2"></i>
+        Summarizer
+      </button>
     </>
   )}
 
