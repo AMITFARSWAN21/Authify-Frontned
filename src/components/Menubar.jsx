@@ -64,6 +64,15 @@ export const Menubar = () => {
       <button
         className="me-3 border-0 bg-white text-dark"
         style={{ fontSize: '1rem', padding: '6px 12px' }}
+        onClick={() => navigate('/get-marks')}
+      >
+        <i className="bi bi-journal-text me-2"></i>
+        Marks
+      </button>
+
+      <button
+        className="me-3 border-0 bg-white text-dark"
+        style={{ fontSize: '1rem', padding: '6px 12px' }}
         onClick={() => navigate('/student-registration')}
       >
         <i className="bi bi-person-plus me-2"></i>
@@ -91,6 +100,20 @@ export const Menubar = () => {
       <i className="bi bi-upload me-2"></i>
       Upload Notes
     </button>
+    
+  )}
+
+
+{isLoggedIn && role === 2 && (
+    <button
+      className="me-3 border-0 bg-white text-dark"
+      style={{ fontSize: '1rem', padding: '6px 12px' }}
+      onClick={() => navigate('/add-marks')}
+    >
+      <i className="bi bi-upload me-2"></i>
+      Marks
+    </button>
+    
   )}
 
 

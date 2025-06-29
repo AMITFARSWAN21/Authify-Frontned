@@ -15,6 +15,8 @@ import Registration from './pages/Registration';
 import { StudentRegistered } from './pages/StudentRegistered';
 import CertificateGenerator from './pages/CertificateGenerator';
 import NotesSummarizer from './pages/NotesSummarizer';
+import AddMarksForm from './pages/AddMarksForm';
+import StudentMarksViewer from './pages/StudentMarksViewer';
 
 const App = () => {
   return (
@@ -44,6 +46,8 @@ const App = () => {
           <Route path="/student-registered" element={<StudentRegistered/>} />
           <Route path="/generate-certificate" element={<CertificateGenerator />} />
           <Route path="/notes-summarizer" element={<NotesSummarizer />} />
+          <Route path="/add-marks" element={<AddMarksForm/>} />
+          <Route path="/get-marks" element={<StudentMarksViewer/>} />
           
           
           
