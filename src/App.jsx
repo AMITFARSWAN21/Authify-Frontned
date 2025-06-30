@@ -9,7 +9,7 @@ import { Register } from './pages/Register';
 import { Profile } from './pages/Profile';
 import AdminDashboard from './pages/AdminDashboard';
 import { ProtectedRoute } from './components/ProtectedRoute';
-import UploadedNotes from './pages/UploadedNOtes';
+import UploadedNotes from './pages/UploadedNotes';
 import { Layout } from './components/Layout'; // ✅
 import Registration from './pages/Registration';
 import { StudentRegistered } from './pages/StudentRegistered';
