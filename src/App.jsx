@@ -17,6 +17,7 @@ import CertificateGenerator from './pages/CertificateGenerator';
 import NotesSummarizer from './pages/NotesSummarizer';
 import AddMarksForm from './pages/AddMarksForm';
 import StudentMarksViewer from './pages/StudentMarksViewer';
+import  StudyPlanGenerator  from './pages/StudyPlanGenerator';
 
 const App = () => {
   return (
@@ -48,6 +49,7 @@ const App = () => {
           <Route path="/notes-summarizer" element={<NotesSummarizer />} />
           <Route path="/add-marks" element={<AddMarksForm/>} />
           <Route path="/get-marks" element={<StudentMarksViewer/>} />
+          <Route path="/study-plan" element={<StudyPlanGenerator/>} />
           
           
           
