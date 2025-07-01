@@ -34,8 +34,12 @@ export const Login = () => {
         credentials: 'include', // Include cookies
         body: JSON.stringify(formData)
       })
+
+      
   
       const data = await response.json()
+
+      console.log("Login Response:", response.status, data);
   
       if (response.ok) {
         // Step 2: Get role using email
