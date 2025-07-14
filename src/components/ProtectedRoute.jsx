@@ -10,6 +10,7 @@ export const ProtectedRoute = ({ children }) => {
         const res = await fetch('http://localhost:8080/api/v1.0/is-authenticated', {
           method: 'GET',
           credentials: 'include',
+          
         });
         const result = await res.json();
         setIsAuthenticated(result === true);

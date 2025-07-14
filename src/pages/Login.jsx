@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { AppConstants } from '../utils/constants'
+import college from '../assets/college.webp'
 
 export const Login = () => {
   const navigate = useNavigate()
@@ -23,37 +24,29 @@ export const Login = () => {
     e.preventDefault()
     setError('')
     setLoading(true)
-  
+
     try {
-      // Step 1: Login request
       const response = await fetch(`${AppConstants.BACKEND_URL}/api/v1.0/login`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        credentials: 'include', // Include cookies
+        credentials: 'include',
         body: JSON.stringify(formData)
       })
 
-      
-  
       const data = await response.json()
 
-      console.log("Login Response:", response.status, data);
-  
       if (response.ok) {
-        // Step 2: Get role using email
         const roleRes = await fetch(`${AppConstants.BACKEND_URL}/api/v1.0/role?email=${formData.email}`, {
           credentials: 'include'
         })
         const roleData = await roleRes.json()
 
         localStorage.setItem('role', roleData.role);
-  
-        if (roleData.role === 1) {
-          navigate('/') // Student
-        } else if (roleData.role === 2) {
-          navigate('/') // Admin
+
+        if (roleData.role === 1 || roleData.role === 2) {
+          navigate('/')
         } else {
           setError('Unknown role')
         }
@@ -66,78 +59,92 @@ export const Login = () => {
       setLoading(false)
     }
   }
-  
 
   return (
     <div className="min-vh-100 d-flex align-items-center justify-content-center bg-light">
-      <div className="card shadow-sm" style={{ maxWidth: '400px', width: '90%' }}>
-        <div className="card-body p-4">
-          <div className="text-center mb-4">
-            <i className="bi bi-shield-lock-fill text-primary fs-1"></i>
-            <h4 className="mt-2">Welcome Back</h4>
-            <p className="text-muted">Please enter your credentials</p>
+      <div className="container">
+        <div className="row shadow bg-white rounded overflow-hidden">
+          {/* Left Side - Image */}
+          <div className="col-md-6 d-none d-md-block p-0">
+            <img 
+              src={college}
+              alt="Login Illustration"
+              className="img-fluid h-100 w-100 object-fit-cover"
+              style={{ objectFit: 'cover' }}
+            />
           </div>
 
-          <form onSubmit={handleSubmit}>
-            {error && (
-              <div className="alert alert-danger mb-3">{error}</div>
-            )}
-            
-            <div className="mb-3">
-              <label className="form-label">Email address</label>
-              <input 
-                type="email"
-                name="email"
-                className="form-control"
-                placeholder="name@example.com"
-                value={formData.email}
-                onChange={handleChange}
-                required
-              />
-            </div>
+          {/* Right Side - Login Form */}
+          <div className="col-md-6 d-flex align-items-center justify-content-center">
+            <div className="card-body p-4" style={{ width: '100%', maxWidth: '400px' }}>
+              <div className="text-center mb-4">
+                <i className="bi bi-shield-lock-fill text-primary fs-1"></i>
+                <h4 className="mt-2">Welcome To Edu-Notes</h4>
+                <p className="text-muted">Please enter your credentials</p>
+              </div>
 
-            <div className="mb-3">
-              <label className="form-label">Password</label>
-              <input 
-                type="password"
-                name="password"
-                className="form-control"
-                placeholder="Enter your password"
-                value={formData.password}
-                onChange={handleChange}
-                required
-              />
-            </div>
+              <form onSubmit={handleSubmit}>
+                {error && (
+                  <div className="alert alert-danger mb-3">{error}</div>
+                )}
 
-            <div className="mb-4 text-end">
-              <span 
-                className="text-primary" 
-                role="button"
-                onClick={() => navigate('/reset-password')}
-              >
-                Forgot Password?
-              </span>
-            </div>
+                <div className="mb-3">
+                  <label className="form-label">Email address</label>
+                  <input 
+                    type="email"
+                    name="email"
+                    className="form-control"
+                    placeholder="name@example.com"
+                    value={formData.email}
+                    onChange={handleChange}
+                    required
+                  />
+                </div>
 
-            <button 
-              type="submit" 
-              className="btn btn-primary w-100 py-2 mb-3"
-              disabled={loading}
-            >
-              {loading ? 'Logging in...' : 'Login'}
-            </button>
+                <div className="mb-3">
+                  <label className="form-label">Password</label>
+                  <input 
+                    type="password"
+                    name="password"
+                    className="form-control"
+                    placeholder="Enter your password"
+                    value={formData.password}
+                    onChange={handleChange}
+                    required
+                  />
+                </div>
 
-            <div className="text-center">
-              <span className="text-muted">Don't have an account? </span>
-              <span 
-                className="text-primary" 
-                role="button"
-                onClick={() => navigate('/register')}
-              >
-                Create Account
-              </span>
+                <div className="mb-4 text-end">
+                  <span 
+                    className="text-primary" 
+                    role="button"
+                    onClick={() => navigate('/reset-password')}
+                  >
+                    Forgot Password?
+                  </span>
+                </div>
+
+                <button 
+                  type="submit" 
+                  className="btn btn-primary w-100 py-2 mb-3"
+                  disabled={loading}
+                >
+                  {loading ? 'Logging in...' : 'Login'}
+                </button>
+
+                <div className="text-center">
+                  <span className="text-muted">Don't have an account? </span>
+                  <span 
+                    className="text-primary" 
+                    role="button"
+                    onClick={() => navigate('/register')}
+                  >
+                    Create Account
+                  </span>
+                </div>
+              </form>
             </div>
-          </form>
+          </div>
         </div>
       </div>
     </div>

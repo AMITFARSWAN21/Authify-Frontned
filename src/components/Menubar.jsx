@@ -15,11 +15,13 @@ export const Menubar = () => {
   }, []);
 
   const handleLogout = async () => {
-    try {
+       try {
       const res = await fetch('http://localhost:8080/api/v1.0/logout', {
         method: 'POST',
         credentials: 'include',
       });
+
+
 
       if (res.ok) {
         localStorage.removeItem('role');
